@@ -111,7 +111,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
           <Button
             disabled={loading}
             variant="destructive"
-            size="sm"
+            size="icon"
             onClick={() => setOpen(true)}
           >
             <Trash className="h-4 w-4" />
