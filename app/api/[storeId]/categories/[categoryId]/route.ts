@@ -12,9 +12,7 @@ export async function GET(
     }
 
     const categories = await prismadb.category.findUnique({
-      where: {
-        id: params.categoryId,
-      },
+      where: { id: params.categoryId },
     })
 
     return NextResponse.json(categories)
@@ -51,9 +49,7 @@ export async function DELETE(
     }
 
     const category = await prismadb.category.deleteMany({
-      where: {
-        id: params.categoryId,
-      },
+      where: { id: params.categoryId },
     })
 
     return NextResponse.json(category)

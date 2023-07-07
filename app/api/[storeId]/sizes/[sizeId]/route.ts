@@ -98,9 +98,7 @@ export async function PATCH(
     }
 
     const size = await prismadb.size.updateMany({
-      where: {
-        id: params.sizeId,
-      },
+      where: { id: params.sizeId },
       data: {
         name,
         value,

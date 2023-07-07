@@ -65,9 +65,7 @@ export async function GET(
     }
 
     const colors = await prismadb.color.findMany({
-      where: {
-        storeId: params.storeId,
-      },
+      where: { storeId: params.storeId },
     })
 
     return NextResponse.json(colors)

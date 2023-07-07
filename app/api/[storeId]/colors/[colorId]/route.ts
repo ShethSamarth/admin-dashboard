@@ -98,9 +98,7 @@ export async function PATCH(
     }
 
     const color = await prismadb.color.updateMany({
-      where: {
-        id: params.colorId,
-      },
+      where: { id: params.colorId },
       data: {
         name,
         value,
