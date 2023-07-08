@@ -1,34 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CRM + Dashboard for E-Commerce Store
 
-## Getting Started
+This is a repository for CRM + Dashboard for E-Commerce Store: Next.js 13.4, React, TailwindCSS, Stripe, ShadCN UI, MySQL, AWS.
 
-First, run the development server:
+Key Features:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- It serves as both CRM as well as Admin Dashboard, also provides API for quick development
+- Mulitple vendors / stores can be controlled through this single CMS!
+- Create, update and delete categories, products, billboards, colors & sizes
+- Upload multiple images for products, and change them whenever required
+- Search through all categories, products, sizes, colors, billboards with included pagination
+- Control which products are needed to be "Featured"
+- Total Orders, Sales, Revenue, Stocks are displayed on Admin Dashboard.
+- Graphs of your Revenue per Month
+- MySQL database deployed on AWS
+- Stripe Webhook for Orders Confirmation
+- Zustand for State Management
+- Credential authentication with Clerk
+- Google authentication with Clerk
+- Client form validation and handling using react-hook-form
+- Server error handling with react-hot-toast
+- Tailwind design for sleek UI
+- Tailwind animations and transition effects
+- Full responsiveness for all devices
+
+# Final Version
+
+To visit the website, [click here.](https://admin-dashboard-ss.vercel.app)
+
+## USE THIS WITH [ECOMMERCE WEBSITE](https://github.com/ShethSamarth/ecommerce-store)
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/ShethSamarth/admin-dashboard.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```shell
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Setup prisma
 
-## Learn More
+```shell
+npx prisma generate
+npx prisma db push
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Setup .env file
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```js
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
 
-## Deploy on Vercel
+DATABASE_URL=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+STRIPE_API_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+FRONTEND_STORE_URL=
+
+```
+
+### Start the app
+
+```shell
+npm run dev
+```
