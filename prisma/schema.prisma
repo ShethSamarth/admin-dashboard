@@ -3,13 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "mongodb"
   url          = env("DATABASE_URL")
-  relationMode = "prisma"
 }
 
 model Store {
-  id         String      @id @default(uuid())
+  id         String      @id @default(uuid()) @map("_id")
   name       String
   userId     String
   billboards Billboard[] @relation("StoreToBillboard")
@@ -23,7 +22,7 @@ model Store {
 }
 
 model Billboard {
-  id         String     @id @default(uuid())
+  id         String     @id @default(uuid()) @map("_id")
   storeId    String
   store      Store      @relation("StoreToBillboard", fields: [storeId], references: [id])
   label      String
@@ -36,7 +35,7 @@ model Billboard {
 }
 
 model Category {
-  id          String    @id @default(uuid())
+  id          String    @id @default(uuid()) @map("_id")
   storeId     String
   store       Store     @relation("StoreToCategory", fields: [storeId], references: [id])
   billboardId String
@@ -51,7 +50,7 @@ model Category {
 }
 
 model Size {
-  id        String    @id @default(uuid())
+  id        String    @id @default(uuid()) @map("_id")
   storeId   String
   store     Store     @relation("StoreToSize", fields: [storeId], references: [id])
   name      String
@@ -64,7 +63,7 @@ model Size {
 }
 
 model Color {
-  id        String    @id @default(uuid())
+  id        String    @id @default(uuid()) @map("_id")
   storeId   String
   store     Store     @relation("StoreToColor", fields: [storeId], references: [id])
   name      String
@@ -77,13 +76,13 @@ model Color {
 }
 
 model Product {
-  id         String      @id @default(uuid())
+  id         String      @id @default(uuid()) @map("_id")
   storeId    String
   store      Store       @relation("StoreToProduct", fields: [storeId], references: [id])
   categoryId String
   category   Category    @relation("CategoryToProduct", fields: [categoryId], references: [id])
   name       String
-  price      Decimal
+  price      Int
   isFeatured Boolean     @default(false)
   isArchived Boolean     @default(false)
   sizeId     String
@@ -102,7 +101,7 @@ model Product {
 }
 
 model Image {
-  id        String   @id @default(uuid())
+  id        String   @id @default(uuid()) @map("_id")
   productId String
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   url       String
@@ -113,7 +112,7 @@ model Image {
 }
 
 model Order {
-  id         String      @id @default(uuid())
+  id         String      @id @default(uuid()) @map("_id")
   storeId    String
   store      Store       @relation("StoreToOrder", fields: [storeId], references: [id])
   orderItems OrderItem[]
@@ -128,7 +127,7 @@ model Order {
 
 // Intermediary for a many-to-many relationship
 model OrderItem {
-  id        String  @id @default(uuid())
+  id        String  @id @default(uuid()) @map("_id")
   orderId   String
   order     Order   @relation(fields: [orderId], references: [id])
   productId String
